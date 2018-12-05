@@ -1,6 +1,6 @@
 package main;
 
-public class _07ReverseInteger {
+public class _007_ReverseInteger {
 
 
     public static void main(String[] args) {
