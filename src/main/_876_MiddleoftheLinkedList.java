@@ -40,6 +40,10 @@ public class _876_MiddleoftheLinkedList {
         ListNode.printVal(new _876_MiddleoftheLinkedList().middleNode(head));
     }
 
+    /**
+     * middle走一步 fast走两步
+     * middle先走
+     */
     public ListNode middleNode(ListNode head) {
         ListNode middleNode = head;
         ListNode fastNode = head;
