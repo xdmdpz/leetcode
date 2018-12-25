@@ -55,7 +55,10 @@ public class _huawei {
 
     public boolean is顺子() {
         for (int i = 0; i < 8; i++) {
-            if (sum(nums, i) == 5)
+            if (sum(Arrays.stream(nums)
+                    .filter(a -> a == 1)
+                    .toArray()
+                    , i) == 5)
                 return true;
         }
         return false;
