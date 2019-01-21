@@ -5,8 +5,11 @@ import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) throws IOException {
-        File file = new File("/Users/sunyifu/Desktop/222.txt");
 
+        long benin  = System.currentTimeMillis()/1000;
+        System.out.println(benin);
+        File file = new File("/Users/sunyifu/Desktop/222.txt");
+        long l = 0;
         InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "utf-8");
         BufferedReader br = new BufferedReader(isr);
         //跳过第一个字符
@@ -45,6 +48,7 @@ public class test {
             // if file doesnt exists, then create it
             if (!file.exists()) {
                 file.createNewFile();
+
             }
 
 
@@ -52,6 +56,7 @@ public class test {
 
             for (Demo demo: list) {
                 fop.write(demo.toString().getBytes());
+                l++;
             }
 
             fop.flush();
@@ -61,6 +66,13 @@ public class test {
         }catch(IOException e){
             e.printStackTrace();
         }
+        long end  = System.currentTimeMillis()/1000;
+        System.out.println(end);
+
+        System.out.printf("耗时 :");
+        System.out.print(end - benin);
+        System.out.println();
+        System.out.println(l);
 
     }
 }

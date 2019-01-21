@@ -39,14 +39,53 @@ public class BinaryTreeNode {
         return this;
     }
 
+    public static void main(String[] args) {
+        BinaryTreeNode binaryTreeNode = new BinaryTreeNode(1);
+        binaryTreeNode
+                .setRight(
+                        new BinaryTreeNode(5))
+                .setLeft(
+                        new BinaryTreeNode(2)
+                                .setLeft(
+                                        new BinaryTreeNode(3)
+                                                .setLeft(new BinaryTreeNode(4))
+                                                .setRight(new BinaryTreeNode(6))
+                                )
+                );
 
+//        binaryTreeNode.printNode(binaryTreeNode);
+        binaryTreeNode.ppp(binaryTreeNode, 5);
+        System.out.println();
+//        binaryTreeNode.ppp(binaryTreeNode, 4);
+    }
 
-    public void printNode(BinaryTreeNode node){
+    public void ppp(BinaryTreeNode root, Integer object) {
+        if (root.right != null || root.left != null) {
+            printNode(root);
+            if (root.right != null && root.right.val == object) {
+                printNode(root.right);
+                System.exit(0);
+            } else if (root.left != null && root.left.val == object) {
+                printNode(root.left);
+                System.exit(0);
+            }
+
+        }
+        if (root.getRight() != null) {  //递归遍历右孩子
+            ppp(root.getRight(), object);
+        }
+        if (root.getLeft() != null) {  //使用递归进行遍历左孩子
+            ppp(root.getLeft(), object);
+        }
+    }
+
+    public void printNode(BinaryTreeNode node) {
         System.out.print(node.getVal());
     }
 
     /**
-     *  前序遍历
+     * 前序遍历
+     *
      * @param root
      */
     public void preorderTraversal(BinaryTreeNode root) {
@@ -58,8 +97,10 @@ public class BinaryTreeNode {
             preorderTraversal(root.getRight());
         }
     }
+
     /**
-     *  中序遍历
+     * 中序遍历
+     *
      * @param root
      */
     public void sequentialTraversal(BinaryTreeNode root) {  //中序遍历
@@ -71,15 +112,17 @@ public class BinaryTreeNode {
             sequentialTraversal(root.getRight());
         }
     }
+
     /**
      * 后序遍历
+     *
      * @param root
      */
     public void postOrderTraversal(BinaryTreeNode root) {  //后序遍历
         if (root.getLeft() != null) {
             postOrderTraversal(root.getLeft());
         }
-        if(root.getRight() != null) {
+        if (root.getRight() != null) {
             postOrderTraversal(root.getRight());
         }
         printNode(root);
